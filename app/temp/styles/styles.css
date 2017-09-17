@@ -1110,7 +1110,13 @@ Zamiast tego edytuj gulp/templates/sprite.css.
   width: 100%;
   padding: 10px 0;
   z-index: 2;
+  -webkit-transition: background-color .3s ease-out;
+  transition: background-color .3s ease-out;
 }
+
+.site-header--is-expanded {
+    background-color: rgba(47,85,114, 0.5);
+  }
 
 @media (min-width: 800px) {
 
@@ -1119,8 +1125,11 @@ Zamiast tego edytuj gulp/templates/sprite.css.
 }
   }
 
+@media (min-width: 800px) {
+
 .site-header__btn-container {
-    float: right;
+      float: right
+  }
   }
 
 .site-header__logo {
@@ -1149,13 +1158,70 @@ Zamiast tego edytuj gulp/templates/sprite.css.
     }
 
 .site-header__menu-icon {
-    width: 50px;
-    height: 50px;
-    background-color: #fff;
+    width: 2.1rem;
+    height: 2.1rem;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    z-index: 10;
+    top: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
   }
+
+.site-header__menu-icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 0.3rem;
+      background-color: #fff;
+      -webkit-transition: all 0.3s ease-out;
+      transition: all 0.3s ease-out;
+      -webkit-transform-origin: left top;
+              transform-origin: left top;
+    }
+
+.site-header__menu-icon__middle {
+      position: absolute;
+      top: 0.9rem;
+      width: 100%;
+      height: 0.3rem;
+      background-color: #fff;
+      -webkit-transition: all 0.3s ease-in;
+      transition: all 0.3s ease-in;
+      -webkit-transform-origin: left center;
+              transform-origin: left center;
+    }
+
+.site-header__menu-icon::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: .3rem;
+      background-color: #fff;
+      -webkit-transition: all 0.3s ease-out;
+      transition: all 0.3s ease-out;
+      -webkit-transform-origin: left bottom;
+              transform-origin: left bottom;
+      -webkit-transform: translateY(-0.05rem);
+              transform: translateY(-0.05rem);
+    }
+
+.site-header__menu-icon--close-x::before {
+        -webkit-transform: translateX(0.25rem) rotate(45deg) scaleX(1.25);
+                transform: translateX(0.25rem) rotate(45deg) scaleX(1.25);
+      }
+
+.site-header__menu-icon--close-x .site-header__menu-icon__middle {
+        opacity: 0;
+        -webkit-transform: scaleX(0);
+                transform: scaleX(0);
+      }
+
+.site-header__menu-icon--close-x::after {
+        -webkit-transform: translateX(0.25rem) rotate(-45deg) scaleX(1.25);
+                transform: translateX(0.25rem) rotate(-45deg) scaleX(1.25);
+      }
 
 @media (min-width: 800px) {
 
@@ -1165,18 +1231,51 @@ Zamiast tego edytuj gulp/templates/sprite.css.
   }
 
 .site-header__menu-content {
-    display: none;
+    opacity: 0;
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    position: relative;
+    z-index: -10;
+    padding-top: 90px;
+    text-align: center;
   }
 
 @media (min-width: 800px) {
 
 .site-header__menu-content {
-      display: block
+      opacity: 1;
+      z-index: 1;
+      padding-top: 0;
+      -webkit-transform: scale(1);
+              transform: scale(1)
   }
   }
 
+.site-header__menu-content--is-visable {
+      opacity: 1;
+      z-index: 1;
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+
+.primary-nav {
+  padding-top: 10px;
+}
+
+@media (min-width: 800px) {
+
+.primary-nav {
+    padding-top: 0
+}
+  }
+
+@media (min-width: 800px) {
+
 .primary-nav--pull-right {
-    float: right;
+      float: right
+  }
   }
 
 .primary-nav ul {
@@ -1186,8 +1285,28 @@ Zamiast tego edytuj gulp/templates/sprite.css.
 
 .primary-nav li {
     list-style: none;
-    float: left;
-    padding-right: 20px;
+    display: inline-block;
+    padding-right: 7px;
+  }
+
+@media (min-width: 800px) {
+
+.primary-nav li {
+      float: left;
+      display: block;
+      padding-right: 20px
+  }
+  }
+
+.primary-nav li:last-child {
+    padding-right: 0;
+  }
+
+@media (min-width: 800px) {
+
+.primary-nav li:last-child {
+      padding-right: 20px
+  }
   }
 
 .primary-nav a {
@@ -1195,5 +1314,16 @@ Zamiast tego edytuj gulp/templates/sprite.css.
     color: #fff;
     text-decoration: none;
     font-weight: 300;
-    padding: 12px 0;
+    padding: 5px 8px;
+    font-size: 0.8rem;
+    background-color: rgba(47,85,114, 0.5);
+  }
+
+@media (min-width: 800px) {
+
+.primary-nav a {
+      font-size: 1rem;
+      padding: 12px 0;
+      background-color: transparent
+  }
   }
