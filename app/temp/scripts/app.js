@@ -11300,6 +11300,7 @@ var StickyHeader = function () {
             that.siteHeader.addClass("site-header--dark");
           } else {
             that.siteHeader.removeClass("site-header--dark");
+            that.headerLinks.removeClass("is-current-link");
           }
         }
       });
